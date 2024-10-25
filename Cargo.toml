@@ -1,0 +1,28 @@
+[package]
+name = "vulnerability_management_db"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+iced = { version = "0.12", features = ["tokio", "async-std", "debug"] }
+tokio = { version = "1.35", features = ["full"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+r2d2 = "0.8"
+r2d2_sqlite = "0.25"
+serde = { version = "1.0", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+csv = "1.1"
+log = "0.4"
+env_logger = "0.11"
+anyhow = "1.0"
+dirs = "5.0"
+futures = "0.3"
+encoding_rs = "0.8.35"
+encoding_rs_io = "0.1"
+reqwest = { version = "0.12.8", features = ["json"] }
+regex = "1.11.0"
+scraper = "0.12"
+serde_json = "1.0.132"
+sqlx = { version = "0.8.2", features = ["runtime-tokio-native-tls"] }
+lazy_static = "1.5.0"
+thiserror = "1.0.64"
