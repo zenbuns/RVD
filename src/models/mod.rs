@@ -3,3 +3,4 @@
 pub mod robot;
 pub mod vulnerability;
 pub(crate) mod vulnerability_csv;
+pub(crate) mod software;
