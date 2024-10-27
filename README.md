@@ -1,8 +1,8 @@
-# 🔒 Vulnerability Database
+# 🔒 Robot Vulnerability Database
 
 ## 🎯 Eesmärk
 
-Luua andmebaas, kuhu on salvestatud hetkel teadaolevad haavatavused, nende mõjud meie süsteemidele, hinnangud ja leevendusmeetmed.
+Luua andmebaas, kuhu on salvestatud hetkel teadaolevad haavatavused, nende mõjud meie robotile, hinnangud ja leevendusmeetmed.
 
 ## ⚙️ Funktsioonid
 
@@ -52,7 +52,57 @@ Peale ehitamist saad projekti käivitada käsuga:
 
 cargo run
 
+# 📋 TODO List
 
-## 📄 Litsents
+## ✅ Teostatud Funktsionaalsused
+
+### 🗄️ Andmebaas
+- [x] SQLite andmebaasi implementatsioon
+- [x] Andmebaasi põhistruktuur
+- [x] CSV faili importimise funktsionaalsus
+- [x] Põhilised andmebaasi päringud
+- [x] Laisa laadimise (lazy loading) implementeerimine
+- [x] Leheküljepõhine andmete laadimine (pagination)
+- [x] Vahemälu süsteemi põhistruktuur
+- [x] Andmebaasi indekseerimine
+
+### 🔍 Otsing ja Filtreerimine
+- [x] Otsingu põhifunktsionaalsus
+- [x] Kuupäeva filter
+- [x] Riskitaseme filter
+- [x] CVE ID filter
+- [x] Statistika visualiseerimine
+
+### 🤖 Robotiteinventuur
+- [ ] Põhiline inventuur haldus
+- [?] Andmebaasi integratsioon
+- [x] Kasutajaliides
+
+## 🚧 Tegemist Vajavad Tööd
+
+### 🗃️ Andmebaasi Optimeerimised
+- [ ] Kohandatud vormide jõudluse parandamine
+- [ ] Suurte ühendusoperatsioonide (JOIN) optimeerimine
+- [ ] Vahemälu strateegia täiustamine
+- [ ] Päringute optimeerimine üle 320000 kirje korral
+
+### ⚠️ Häiresüsteem
+- [ ] Automaatne haavatavuste kontroll
+- [ ] Teavitussüsteemi implementatsioon
+- [ ] Tarkvara ristkontrolli funktsionaalsus
+- [ ] Häirete prioritiseerimine
+- [ ] E-posti teavituste seadistamine
+
+## 🐛 Teadaolevad Vead
+- [ ] Robotite inventuuri join CVE jookustab kokku süsteemi
+- [ ] Kohandatud vormide aeglus
+- [ ] Suured andmebaasi operatsioonid põhjustavad viivitusi
+
+## 📅 JärgmisePrioriteedid
+1. Robotite inventuuri jõudluse optimeerimine
+2. Häiresüsteemi põhifunktsionaalsuse implementeerimine
+3. Andmebaasi päringute optimeerimine
+
+
 
 See projekt on litsentseeritud MIT litsentsi alusel.
