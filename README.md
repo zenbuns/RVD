@@ -25,12 +25,12 @@ Luua andmebaas, kuhu on salvestatud hetkel teadaolevad haavatavused, nende mõju
 1. 🖥️ **Ava terminal**
 2. ⚡ **Käivita järgmine käsk** Rust'i paigaldamiseks `rustup` abil:
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh ```
 
 3. 📄 Järgi ekraanil kuvatavaid juhiseid.
 4. 🔁 Peale paigaldamist lisa Rust oma PATH-i, taaskäivitades terminali või käivitades:
 
-source $HOME/.cargo/env
+```source $HOME/.cargo/env```
 
 ### 📥 Juhised
 
@@ -39,18 +39,18 @@ source $HOME/.cargo/env
 
 
 2. **📂 Paiguta CSV fail:**
-   - Aseta allalaaditud allitems1.csv fail projekti kausta src/db
+   - Aseta allalaaditud allitems1.csv fail projekti kausta ```src/db```
 
 3. **🔨 Ehita projekt:**
    - Ava terminal projekti juurkaustas ja käivita:
 
-cargo build
+```cargo build```
 
 ### 🚀 Projekti käivitamine
 
 Peale ehitamist saad projekti käivitada käsuga:
 
-cargo run
+```cargo run```
 
 # 📋 TODO List
 
