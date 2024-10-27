@@ -74,10 +74,8 @@ cargo run
 - [x] Statistika visualiseerimine
 
 ### 🤖 Robotiteinventuur
-- [ ] Põhiline inventuur haldus
 - [?] Andmebaasi integratsioon
-- [x] Kasutajaliides
-- [ ] Roboti andmete lisamine ja töötlemine läbi GUI
+- [x] Kasutajaliidese põhi
 
 ## 🚧 Tegemist Vajavad Tööd
 
@@ -86,6 +84,7 @@ cargo run
 - [ ] Suurte ühendusoperatsioonide (JOIN) optimeerimine
 - [ ] Vahemälu strateegia täiustamine
 - [ ] Päringute optimeerimine üle 320000 kirje korral
+- [ ] Roboti andmete lisamine ja töötlemine läbi GUI
 
 ### ⚠️ Häiresüsteem
 - [ ] Automaatne haavatavuste kontroll
