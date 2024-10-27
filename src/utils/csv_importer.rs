@@ -88,7 +88,7 @@ pub async fn import_vulnerabilities_from_csv(
 		let mut batch = Vec::with_capacity(BATCH_SIZE);
 
 		for (line_number, result) in rdr.deserialize::<VulnerabilityCsvRecord>().enumerate() {
-			match process_csv_record(result, line_number + header_line + 2) { // Adjusted line number
+			match process_csv_record(result, line_number + header_line + 2) {
 				Ok(vuln) => {
 					if !is_metadata_record(&vuln) {
 						batch.push(vuln);
@@ -439,6 +439,4 @@ mod tests {
 		assert!(result.is_err());
 	}
 
-	// Note: Testing database operations would require setting up a test database
-	// and is beyond the scope of this unit test module.
 }
