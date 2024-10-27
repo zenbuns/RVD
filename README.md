@@ -77,6 +77,7 @@ cargo run
 - [ ] Põhiline inventuur haldus
 - [?] Andmebaasi integratsioon
 - [x] Kasutajaliides
+- [ ] Roboti andmete lisamine ja töötlemine läbi GUI
 
 ## 🚧 Tegemist Vajavad Tööd
 
@@ -94,8 +95,6 @@ cargo run
 - [ ] E-posti teavituste seadistamine
 
 ## 🐛 Teadaolevad Vead
-- [ ] Robotite inventuuri join CVE jookustab kokku süsteemi
-- [ ] Kohandatud vormide aeglus
 - [ ] Suured andmebaasi operatsioonid põhjustavad viivitusi
 
 ## 📅 JärgmisePrioriteedid
