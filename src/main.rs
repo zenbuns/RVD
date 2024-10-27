@@ -11,7 +11,7 @@ use db::connection::{self, SqlitePool};
 use db::schema;
 use gui::app;
 use log::{error, info, warn};
-use repositories::vulnerability_repo;
+use repositories::vulnerability_repo::VulnerabilityRepository;
 use std::path::PathBuf;
 use std::sync::Arc;
 use tokio::signal;
@@ -25,6 +25,7 @@ const UPDATE_INTERVAL: Duration = Duration::from_secs(3600); // 1 hour
 struct App {
 	pool: Arc<SqlitePool>,
 	nvd_client: NvdApiClient,
+	vulnerability_repo: VulnerabilityRepository,
 	shutdown_signal: tokio::sync::broadcast::Sender<()>,
 }
 
@@ -39,6 +40,8 @@ impl App {
 				.context("Failed to establish database connection pool")?,
 		);
 
+		let vulnerability_repo = VulnerabilityRepository::new(pool.clone());
+
 		let nvd_client = NvdApiClient::new(pool.clone())
 			.context("Failed to create NVD API client")?;
 
@@ -47,6 +50,7 @@ impl App {
 		Ok(App {
 			pool,
 			nvd_client,
+			vulnerability_repo,
 			shutdown_signal: shutdown_tx,
 		})
 	}
@@ -59,7 +63,7 @@ impl App {
 	}
 
 	async fn import_initial_data(&self) -> Result<()> {
-		let vulnerabilities = vulnerability_repo::get_all_vulnerabilities(self.pool.clone())
+		let vulnerabilities = self.vulnerability_repo.get_all_vulnerabilities()
 			.await
 			.context("Failed to check existing vulnerabilities")?;
 
@@ -72,9 +76,9 @@ impl App {
 					info!("Successfully imported {} vulnerabilities from CSV", count);
 
 					// After CSV import, update with NVD data
-					info!("Starting initial NVD data enrichment");
+					info!("Init NVD");
 					match self.update_vulnerability_data(true).await {
-						Ok(updated) => info!("Enriched {} vulnerabilities with NVD data", updated),
+						Ok(updated) => info!("Updated {} vulnerabilities with NVD data", updated),
 						Err(e) => warn!("Some NVD updates failed: {}", e),
 					}
 				}
@@ -112,17 +116,17 @@ impl App {
 		tokio::spawn(async move {
 			loop {
 				tokio::select! {
-				_ = sleep(UPDATE_INTERVAL) => {
-					match nvd_client.batch_update_vulnerabilities(BATCH_SIZE).await {
-						Ok(count) => info!("Scheduled update completed: {} vulnerabilities updated", count),
-						Err(e) => error!("Scheduled update failed: {}", e),
-					}
-				}
-				_ = shutdown_rx.recv() => {
-					info!("Update scheduler received shutdown signal");
-					break;
-				}
-			}
+                    _ = sleep(UPDATE_INTERVAL) => {
+                        match nvd_client.batch_update_vulnerabilities(BATCH_SIZE).await {
+                            Ok(count) => info!("Scheduled update completed: {} vulnerabilities updated", count),
+                            Err(e) => error!("Scheduled update failed: {}", e),
+                        }
+                    }
+                    _ = shutdown_rx.recv() => {
+                        info!("Update scheduler received shutdown signal");
+                        break;
+                    }
+                }
 			}
 		});
 
@@ -150,16 +154,16 @@ impl App {
 		});
 
 		tokio::select! {
-			result = app::run(self.pool.clone()) => {
-				if let Err(e) = result {
-					error!("GUI application error: {}", e);
-					return Err(e.into());
-				}
-			}
-			_ = shutdown_rx.recv() => {
-				info!("Received shutdown signal, closing application");
-			}
-		}
+            result = app::run(self.pool.clone()) => {
+                if let Err(e) = result {
+                    error!("GUI application error: {}", e);
+                    return Err(e.into());
+                }
+            }
+            _ = shutdown_rx.recv() => {
+                info!("Received shutdown signal, closing application");
+            }
+        }
 
 		self.cleanup().await;
 		Ok(())
