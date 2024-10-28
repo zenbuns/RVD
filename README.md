@@ -35,7 +35,7 @@ Luua andmebaas, kuhu on salvestatud hetkel teadaolevad haavatavused, nende mõju
 ### 📥 Juhised
 
 1. **📥 Lae alla andmed:**
-   - - Lae alla allitems1.csv fail siit: [Google Drive'i link](https://drive.google.com/file/d/16KYLZWWH6ZoHptPvI5vbnud3U3TVIlPd/view?usp=sharing)
+   - - Lae alla allitems1.csv fail siit: [Google Drive'i link](https://drive.google.com/drive/folders/1Hqbxx2ldE29QNn28GbQ3393t_vz0Wz30)
 
 
 2. **📂 Paiguta CSV fail:**
