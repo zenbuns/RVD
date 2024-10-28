@@ -96,7 +96,7 @@ Peale ehitamist saad projekti käivitada käsuga:
 ## 🐛 Teadaolevad Vead
 - [ ] Suured andmebaasi operatsioonid põhjustavad viivitusi
 
-## 📅 JärgmisePrioriteedid
+## 📅 Järgmised Prioriteedid
 1. Robotite inventuuri jõudluse optimeerimine
 2. Häiresüsteemi põhifunktsionaalsuse implementeerimine
 3. Andmebaasi päringute optimeerimine
