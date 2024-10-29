@@ -76,6 +76,7 @@ Peale ehitamist saad projekti käivitada käsuga:
 ### 🤖 Robotiteinventuur
 - [?] Andmebaasi integratsioon
 - [x] Kasutajaliidese põhi
+- [x] Roboti andmete lisamine
 
 ## 🚧 Tegemist Vajavad Tööd
 
@@ -83,8 +84,8 @@ Peale ehitamist saad projekti käivitada käsuga:
 - [ ] Kohandatud vormide jõudluse parandamine
 - [ ] Suurte ühendusoperatsioonide (JOIN) optimeerimine
 - [ ] Vahemälu strateegia täiustamine
-- [ ] Päringute optimeerimine üle 320000 kirje korral
-- [ ] Roboti andmete lisamine ja töötlemine läbi GUI
+- [ ] Roboti andmete töötlemine
+
 
 ### ⚠️ Häiresüsteem
 - [ ] Automaatne haavatavuste kontroll
